@@ -56,14 +56,15 @@ public class DatePick extends LinearLayout {
 
         Calendar calendar = Calendar.getInstance();
         int year = calendar.get(Calendar.YEAR);
+        calendar.set(Calendar.MONTH, 1);
         int month = calendar.get(Calendar.MONTH);
-        int day = calendar.get(Calendar.DAY_OF_MONTH);
+        int day = calendar.getActualMaximum(Calendar.DAY_OF_MONTH);
         int hour = calendar.get(Calendar.HOUR);
         int minute = calendar.get(Calendar.MINUTE);
         int second = calendar.get(Calendar.SECOND);
         int weekDay = calendar.get(Calendar.DAY_OF_WEEK);
 
-        Log.e("tan", year + "年" + month + "月" + day + "日" + hour + "点" + minute + "分" + second + "秒" + "星期" + weekDay);
+        Log.e("tan", year + "年" + (month + 1) + "月" + day + "日" + hour + "点" + minute + "分" + second + "秒" + "星期" + weekDay);
         myTime.setToNow();
         //获取当前日期
         this.time.setText(myTime.year + "-" + (myTime.month + 1) + "-" + myTime.monthDay);
