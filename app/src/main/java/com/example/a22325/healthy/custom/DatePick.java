@@ -6,6 +6,7 @@ import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.text.format.Time;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +16,7 @@ import android.widget.TextView;
 import com.example.a22325.healthy.R;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 /**
  * Created by 22325 on 2017/5/20.
@@ -50,10 +52,21 @@ public class DatePick extends LinearLayout {
 
     public void refresh(final Context context) {
         final LayoutInflater inflater = LayoutInflater.from(context);
+
+
+        Calendar calendar = Calendar.getInstance();
+        int year = calendar.get(Calendar.YEAR);
+        int month = calendar.get(Calendar.MONTH);
+        int day = calendar.get(Calendar.DAY_OF_MONTH);
+        int hour = calendar.get(Calendar.HOUR);
+        int minute = calendar.get(Calendar.MINUTE);
+        int second = calendar.get(Calendar.SECOND);
+        int weekDay = calendar.get(Calendar.DAY_OF_WEEK);
+
+        Log.e("tan", year + "年" + month + "月" + day + "日" + hour + "点" + minute + "分" + second + "秒" + "星期" + weekDay);
         myTime.setToNow();
         //获取当前日期
         this.time.setText(myTime.year + "-" + (myTime.month + 1) + "-" + myTime.monthDay);
-        //(0-6)
         datePick.setAdapter(new PagerAdapter() {
             @Override
             public int getCount() {
